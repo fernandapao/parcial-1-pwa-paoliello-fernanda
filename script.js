@@ -27,7 +27,13 @@ function showModal(pokemon) {
         <p>Tipo(s): ${pokemon.types.map(type => type.type.name).join(', ')}</p>
         <p>Habilidades: ${pokemon.abilities.map(ability => ability.ability.name).join(', ')}</p>
         <p>Experiencia base: ${pokemon.base_experience}</p>
+        <button id="closeModalBtn">Cerrar</button>
     `;
+
+    // Event listener para cerrar el modal al hacer clic en el botón de cierre
+    document.getElementById('closeModalBtn').addEventListener('click', () => {
+        closeModal();
+    });
 
       // Guardar el nombre del Pokémon en el historial
       const pokemonHistory = JSON.parse(localStorage.getItem('pokemonHistory')) || [];
