@@ -29,13 +29,18 @@ function showModal(pokemonj) {
         <p>Experiencia base: ${pokemon.base_experience}</p>
     `;
 
+      // Guardar el nombre del Pokémon en el historial*
+      const pokemonHistory = JSON.parse(localStorage.getItem('pokemonHistory')) || [];
+      if (!pokemonHistory.includes(pokemon.name)) {
+          pokemonHistory.push(pokemon.name);
+          localStorage.setItem('pokemonHistory', JSON.stringify(pokemonHistory));
+      }
+  }
+
     // Función para cerrar el modal
 function closeModal() {
     const modal = document.getElementById('modal');
     modal.style.display = 'none';
-}
-
-
 }
 
 // Función para crear tarjeta de los Pokemons
@@ -89,4 +94,51 @@ document.getElementById('search').addEventListener('keyup', function (event) {
     if (event.key === 'Enter') {
         searchPokemon();
     }
+});
+
+// Función para mostrar el historial de Pokémon visitados
+function showHistoryModal() {
+    const historyModal = document.getElementById('historyModal');
+    const historyList = document.getElementById('historyList');
+    historyList.innerHTML = '';
+    const history = JSON.parse(localStorage.getItem('pokemonHistory')) || [];
+    if (history.length === 0) {
+        historyList.innerHTML = '<li>No hay Pokémon en el historial</li>';
+    } else {
+        history.forEach(pokemonName => {
+            const listItem = document.createElement('li');
+            listItem.textContent = pokemonName;
+            historyList.appendChild(listItem);
+        });
+    }
+    historyModal.style.display = 'block';
+}
+
+
+// Event listener para el botón de historial para mostrar el historial guardado en localStorage
+document.getElementById('historyBtn').addEventListener('click', () => {
+    showHistoryModal();
+});
+
+// Función para cerrar el modal del historial
+function closeHistoryModal() {
+    const historyModal = document.getElementById('historyModal');
+    historyModal.style.display = 'none';
+}
+
+// Event listener para cerrar el modal del historial al hacer clic en el botón "Cerrar historial"
+document.getElementById('cerrarHistorial').addEventListener('click', () => {
+    closeHistoryModal();
+});
+
+// Función para borrar el historial de Pokémon visitados
+function clearHistory() {
+    localStorage.removeItem('pokemonHistory');
+    const historyList = document.getElementById('historyList');
+    historyList.innerHTML = '<li>No hay Pokémon en el historial</li>';
+}
+
+// Event listener para borrar el historial al hacer clic en el botón "Borra historial"
+document.getElementById('borrarHistorial').addEventListener('click', () => {
+    clearHistory();
 });
