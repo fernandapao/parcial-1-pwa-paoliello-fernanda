@@ -29,7 +29,7 @@ function showModal(pokemonj) {
         <p>Experiencia base: ${pokemon.base_experience}</p>
     `;
 
-      // Guardar el nombre del Pokémon en el historial*
+      // Guardar el nombre del Pokémon en el historial
       const pokemonHistory = JSON.parse(localStorage.getItem('pokemonHistory')) || [];
       if (!pokemonHistory.includes(pokemon.name)) {
           pokemonHistory.push(pokemon.name);
