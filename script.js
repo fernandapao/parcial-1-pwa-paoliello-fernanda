@@ -15,7 +15,7 @@ function fetchPokemon() {
 }
 
 //Funcion para mostrar los detalles de los pokemon en el modal
-function showModal(pokemonj) {
+function showModal(pokemon) {
     const modal = document.getElementById('modal');
     const modalContent = document.getElementById('modal-content');
     modal.style.display = 'block';
