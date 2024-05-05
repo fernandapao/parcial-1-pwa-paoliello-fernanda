@@ -67,3 +67,26 @@ function showPokemonList() {
 
 // Cargar la lista de Pokémon al cargar la página
 window.onload = showPokemonList;
+
+
+// Función para buscar Pokémon
+function searchPokemon() {
+    const searchInput = document.getElementById('search').value.toLowerCase();
+    const pokemonCards = document.querySelectorAll('.pokemon-card');
+    pokemonCards.forEach(card => {
+        const pokemonName = card.querySelector('h3').textContent.toLowerCase();
+        if (pokemonName.includes(searchInput)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+
+// Event listener para la tecla Enter en el campo de búsqueda
+document.getElementById('search').addEventListener('keyup', function (event) {
+    if (event.key === 'Enter') {
+        searchPokemon();
+    }
+});
