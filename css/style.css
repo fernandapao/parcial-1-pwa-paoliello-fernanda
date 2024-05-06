@@ -1,25 +1,37 @@
 body {
-    font-family: Arial, sans-serif;
+    background-image: url(/img/fondo2.png);
+    background-repeat: repeat;
+    background-size: contain;
+    background-attachment: fixed;
+    font-family: monospace;
     margin: 0;
     padding: 0;
   }
   
   header {
-    background-color: #333;
+    background-image: url(/img/banner.jpg);
+    background-position: center;
+    background-size: cover;
     color: #fff;
-    padding: 20px;
-    text-align: center;
+    padding: 150px;
+    text-align: end;
+    
   }
   
   h1 {
-    margin: 0;
+    display: none;
   }
+
+  h2 {
+    text-transform: capitalize;
+}
   
   main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 20px;
+    background-color: #00000069;
   }
 
   .pokemon-card {
@@ -42,7 +54,8 @@ body {
   }
   
   .detail-btn {
-    background-color: #333;
+    background-color: #d34040;
+    font-family: monospace;
     border: none;
     border-radius: 4px;
     color: #fff;
@@ -50,6 +63,7 @@ body {
     font-size: 14px;
     padding: 8px 16px;
     transition: background-color 0.3s ease;
+    margin: 10px;
   }
   
   .detail-btn:hover {
@@ -73,6 +87,45 @@ body {
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 50%;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  ul {
+    list-style: none;
   }
   
+  button {
+    border: 1px solid #000000;
+    padding: 10px;
+    background-color: #d32828;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Helvetica', sans-serif;
+    border-radius: 50px;
+}
+
+input {
+    width: 15%;
+    padding: 5px;
+}
+
+footer {
+    
+    background-color: #ff00006b;
+    color: #fff;
+    margin-top: 50px;
+    width: 100%;
+    height: 200px;
+    padding: 20px;
+
+}
+
+footer>p {
+    font-family: monospace;
+    text-align: center;
+    font-size: 20px;
+    
+}

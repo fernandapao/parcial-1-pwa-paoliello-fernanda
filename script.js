@@ -22,6 +22,7 @@ function showModal(pokemon) {
     modalContent.innerHTML = `
         <h2>${pokemon.name}</h2>
         <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
+        <img src="${pokemon.sprites.front_shiny}" alt="${pokemon.name}">
         <p>Altura: ${pokemon.height}</p>
         <p>Peso: ${pokemon.weight}</p>
         <p>Tipo(s): ${pokemon.types.map(type => type.type.name).join(', ')}</p>
@@ -49,13 +50,14 @@ function closeModal() {
     modal.style.display = 'none';
 }
 
+
 // Función para crear tarjeta de los Pokemons
 function createPokemonCard(pokemon) {
     const card = document.createElement('div');
     card.classList.add('pokemon-card');
     card.innerHTML = `
-        <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
-        <h3>${pokemon.name}</h3>
+        <img src="${pokemon.sprites.other.showdown.front_default}" alt="${pokemon.name}">
+        <h2>${pokemon.name}</h2>
         <button class="detail-btn">Detalle</button>
     `;
     const detailBtn = card.querySelector('.detail-btn');
@@ -85,7 +87,7 @@ function searchPokemon() {
     const searchInput = document.getElementById('search').value.toLowerCase();
     const pokemonCards = document.querySelectorAll('.pokemon-card');
     pokemonCards.forEach(card => {
-        const pokemonName = card.querySelector('h3').textContent.toLowerCase();
+        const pokemonName = card.querySelector('h2').textContent.toLowerCase();
         if (pokemonName.includes(searchInput)) {
             card.style.display = 'block';
         } else {
